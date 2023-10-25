@@ -46,7 +46,7 @@ define "Expected Due Date for MCV dose":
 	//when "Needs Zero MCV Dose"
 	//	then Patient.birthDate + 6 months
 	when "No MCV Doses Administered to Patient"
-		then if "High Transmission Setting" then Patient.birthDate + 9 months else Patient.birthDate + 12 months
+		then if "High Transmission Setting" then Patient.birthDate + 12 months else Patient.birthDate + 15 months
 	//when "Second MCV Dose Administered to Patient" is not null and "Needs Supplementary MCV Dose"
 	//	then "Date Second MCV Dose Administered to Patient" + 4 weeks
 	when "First MCV Dose Administered to Patient" is not null
@@ -150,8 +150,8 @@ define "Needs Zero MCV Dose":
 	"No MCV Doses Administered to Patient" 
 	  and (
 			if "High Transmission Setting" 
-			then IMMZCom."Current Patient Age In Months" between 6 and 9 
-			else IMMZCom."Current Patient Age In Months" between 6 and 12
+			then IMMZCom."Current Patient Age In Months" between 9 and 12
+			else IMMZCom."Current Patient Age In Months" between 12 and 15
 		)
 		and IMMZCom."Date of Latest Live Attenuated Vaccine" +4 weeks <= Now()
 		and 
